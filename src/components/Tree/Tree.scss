@@ -1,5 +1,163 @@
 .Tree-container {
     ul {
-        padding: 0 20px;
+        padding: 0 30px;
+    }
+    &.horizontal {
+        ul {
+            padding: 0px;
+            .TreeNode {
+                width: 100%;
+                padding: 10px;
+                > div {
+                    max-width: 200px;
+                    width: 200px;
+                    min-height: 100px;
+                    margin: 10px auto;
+                    position: relative;
+                    .parent-marker {
+                        position: absolute;
+                        top: -20px; // because length of marker is approx 19px
+                        left: 50%;
+                        color: $background;
+                    }
+                }
+            }
+            .row {
+                display: flex;
+                > ul {
+                    position: relative;
+                    &::before {
+                        content: '';
+                        display: block;
+                        width: 100%;
+                        position: absolute;
+                        top: 0px;
+                        right: 0px;
+                        height: 1px;
+                        background-color: $background;
+                    }
+                    &:first-of-type {
+                        &::before {
+                            width: 50%;
+                        }
+                    }
+                    &:last-of-type {
+                        &::before {
+                            width: 50%;
+                            left: 0px;
+                        }
+                    }
+                    &:only-of-type {
+                        &::before {
+                            width: 5px;
+                            transform: rotate(90deg);
+                            left: 50%;
+                        }
+                    }
+                    flex-basis: 1;
+                }
+            }
+        }
+        // ul {
+        //     display: flex;
+        //     list-style: none;
+        //     padding-left: 0;
+        //     text-align: center;
+        
+        //     > li {
+        //         box-sizing: border-box;
+        //         flex: 1;
+        //         padding: 0 5px;
+        
+        //         // We'll accept any container that's not a `ul` or `li` because that would just be silly
+        //         > *:not(ul):not(li) {
+        //             border: $chart-object-border;
+        //             display: inline-block;
+        //             margin: 0 auto;
+        //             padding: $chart-object-padding;
+        //             position: relative;
+        
+        //             // We want to add a connector on the bottom of the element unless we've reached the bottom of the tree
+        //             // which is signified by :last-child
+        //             &:not(:last-child) {
+        //                 &:after {
+        //                     border-left: $chart-line-border;
+        //                     bottom: -1 * $chart-line-height;
+        //                     content: '';
+        //                     height: $chart-line-height;
+        //                     left: 50%;
+        //                     position: absolute;
+        //                 }
+        //             }
+        //         }
+        
+        //         // We've reached the children elements
+        //         ul {
+        //             margin-top: ($chart-line-height * 2) - 1; // Fix 1px spacing between borders, no big deal
+        //             position: relative;
+        
+        //             li {
+        //                 position: relative;
+        
+        //                 // The :before will be the horizontal line on the right side of a child connector and the :after
+        //                 // will be the left side of the child connector. The child connector is the vertical line going
+        //                 // down to its children.
+        //                 &:after,
+        //                 &:before {
+        //                     border-top: $chart-line-border;
+        //                     content: '';
+        //                     position: absolute;
+        //                     top: -1 * $chart-line-height;
+        //                     width: 50%;
+        //                 }
+        
+        //                 &:before {
+        //                     border-left: $chart-line-border;
+        //                     height: $chart-line-height;
+        //                     left: 50%;
+        //                 }
+        
+        //                 &:after {
+        //                     right: 50%;
+        //                 }
+        
+        //                 // The first and last children won't have to connect to its siblings to the left and right of it,
+        //                 // so handle that appropriately by hiding 
+        //                 &:first-child,
+        //                 &:last-child {
+        //                     &:before {
+        //                         border-top: $chart-line-border;
+        //                         border-top-left-radius: $chart-corner-radius;
+        //                         top: -1 * $chart-line-height;
+        //                     }
+        
+        //                     &:after {
+        //                         border: none;
+        //                     }
+        //                 }
+        
+        //                 &:last-child {
+        //                     &:before {
+        //                         border-left: 0;
+        //                         border-right: $chart-line-border;
+        //                         border-top-left-radius: 0;
+        //                         border-top-right-radius: $chart-corner-radius;
+        //                         left: 0;
+        //                         right: 50%;
+        //                     }
+        //                 }
+        
+        //                 // When it's an only child, there won't be a need to connect to its siblings so just remove the
+        //                 // top border which serves as the horizontal connector
+        //                 &:only-child {
+        //                     &:before {
+        //                         border-top: none;
+        //                         border-top-right-radius: 0;
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
     }
 }

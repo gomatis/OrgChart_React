@@ -1,0 +1,28 @@
+/* -------- Variables - Colors -------- */
+:root {
+    --main-bg-color: rgba(255, 255, 255, 0.7);
+    --secondary-bg-color: rgba(255, 255, 255, 0.4);
+    --black: #000;
+}
+
+$primary1: #345DA7;
+$primary2: #3B8AC4;
+$primary3: #4BB4DE;
+$light: #EFDBCB;
+$text: #F2F7FA;
+$text2: #A4B6CB;
+$background: #273E5A;
+$darkText: #444D64;
+
+/* -------- Variables - Font Sizes -------- */
+
+$labelSize : 14px;
+$valueSize: 16px;
+
+/* -------- Variables - Tree Lines -------- */
+
+$chart-object-border: 1px solid $primary1;
+$chart-object-padding: 10px 20px;
+$chart-corner-radius: 10px;
+$chart-line-border: 1px solid $primary1;
+$chart-line-height: 30px;

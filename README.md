@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Improvements that can be made:
+1. Handle horizontal chart lines for more cases
+2. Propogate org change when moving employee with reportees
+3. Complete CRUD operations
+
+
 ## Available Scripts
 
 In the project directory, you can run:

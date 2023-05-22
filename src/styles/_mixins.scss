@@ -1,0 +1,12 @@
+/* -------- Mixins - Font -------- */
+
+@mixin label-style {
+    font-size: $labelSize;
+    color: $text;
+}
+
+/* -------- Mixins - Spacing -------- */
+
+@mixin margin-vertical-20 {
+    margin: 20px 0px;
+}

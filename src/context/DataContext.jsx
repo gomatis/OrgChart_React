@@ -20,10 +20,9 @@ const DataProvider = ({ children }) => {
           return emp;
         }
       })
-      console.log('updatedEmpList is', updatedEmpList);
       setEmployeesList(updatedEmpList);
     }
-  });
+  }, [employeesList]);
 
   const getAllTeams = (employees) => {
     let identifiedTeams = [];
@@ -45,7 +44,6 @@ const DataProvider = ({ children }) => {
     .then(res => res.json())
     .then(
       (result) => {
-        console.log('result is ', result);
         const empList = result.employees;
         const teamList = getAllTeams(empList);
         setEmployeesList(empList);
@@ -61,7 +59,6 @@ const DataProvider = ({ children }) => {
   }, []);
 
   useEffect(()=> {
-    console.log('in useEffect with dep',employeesList,filter);
     if(employeesList && employeesList.length> 0) {
       if (filter === '-1') {
         // -1 is the key used to denote no filtering is needed
@@ -74,7 +71,6 @@ const DataProvider = ({ children }) => {
   }, [filter, employeesList]);
 
   const updateManager = (movedEmployee, newManager) => {
-    console.log('moving movedEmployee to newManager', movedEmployee, newManager);
     let updatedJson = {
       ...movedEmployee,
       managerID: newManager.id,
@@ -92,7 +88,6 @@ const DataProvider = ({ children }) => {
     .then(res => res.json())
     .then(
       (result) => {
-        console.log(' updateManager result is ----> ', result);
         updateEmployee(result.employee);
         setLoading(false);
       },
@@ -105,7 +100,7 @@ const DataProvider = ({ children }) => {
 
 
   return <DataContext.Provider 
-    value={{ filter, setFilter, filteredEmployees, teams, loading, error, updateManager, setTeams, setFilteredEmployees, setEmployeesList }}>
+    value={{ filter, setFilter, filteredEmployees, teams, loading, error, updateManager }}>
       {children}
     </DataContext.Provider>
 }

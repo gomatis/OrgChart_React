@@ -1,0 +1,11 @@
+.Search {
+    display: flex;
+    justify-content: space-between;
+    @include margin-vertical-20;
+    > input {
+        width: 70%;    
+    }
+    > p {
+        @include label-style;
+    }
+}
