@@ -19,19 +19,16 @@ function List() {
       if(newSearchText === "") {
         setSearchedEmployees(filteredEmployees);
       }
-      console.log('onSearchTextChange with ', newSearchText);
       const caseIgnoreSearchText = newSearchText.toLowerCase();
       let employeesMatchingSearch = [];
       if(filter !== '-1') {
         employeesMatchingSearch = filteredEmployees.filter((employee) => {
           let exists = employee.team === filter && containsValue(employee, caseIgnoreSearchText);
-          console.log('returning for emp ', exists, employee);
           return exists;
         })
       } else {
         employeesMatchingSearch = filteredEmployees.filter((employee) => {
           let exists = containsValue(employee, caseIgnoreSearchText);
-          console.log('returning for emp ', exists, employee);
           return exists;
         })
       }

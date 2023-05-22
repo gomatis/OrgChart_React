@@ -1,5 +1,4 @@
 import TreeNode from "./TreeNode/TreeNode";
-import "./Tree.scss";
 import { useContext } from "react";
 import { DataContext } from "../../context/DataContext";
 
@@ -17,20 +16,14 @@ function Tree () {
                     managerMap[employee.managerID] = [employee.id];
                 }
             }
-            console.log('managerMap', managerMap);
-            console.log('employeeList', employeeList);
-
+           
             // identify root of a tree by checking which employee's manager is not an employee in filtered team
             let root = Object.keys(managerMap).filter(managerID => {
                 return !employeeList.some(emp => emp.id === managerID);
             })
             const rootEmployeeID = managerMap[root][0];
-            console.log('rootEmployeeID --->', rootEmployeeID);
             return generateSubtree(managerMap, employeeList, rootEmployeeID);
         }
-
-        // setTree(managerMap);
-        // return managerMap;
     };
 
     const generateSubtree = (managerMap, employeeList, currentEmployeeID) => {
@@ -43,7 +36,7 @@ function Tree () {
                     {generateSubtree(managerMap, employeeList, childNode)}
                 </ul>);
             })
-            return (<li>{<TreeNode key={`tn_${currentEmployee.id}`} employee={currentEmployee} />}{subtree}</li>)
+            return (<li>{<TreeNode key={`tn_${currentEmployee.id}`} employee={currentEmployee} />} <div className="row">{subtree}</div></li>)
         } else {
             return (<li key={`li-${currentEmployeeID}`}>{<TreeNode key={`tn_${currentEmployee.id}`} employee={currentEmployee} />}</li>);
         }
@@ -51,10 +44,10 @@ function Tree () {
 
     return (
         <div className="Tree-container">
-            <div className="Tree-title">
+            <ul>
                 {/* {filter === '-1' ? <p> All Employees</p> : <p>{filter} Employees</p> } */}
                 {constructTreeFromList(filteredEmployees)}
-            </div>
+            </ul>
         </div>
     );
 }
