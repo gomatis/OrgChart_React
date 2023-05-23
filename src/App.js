@@ -2,18 +2,11 @@ import { useContext } from 'react';
 import './App.scss';
 import List from './components/List';
 import Tree from './components/Tree';
-import { initMirageServer } from './server/employees';
 import DataProvider, { DataContext } from './context/DataContext';
 
 function App() {
 
   const { filter, filteredEmployees, error, loading} = useContext(DataContext);
-
-
-  if (process.env.NODE_ENV === 'development') {
-    console.log('dev mode');
-    initMirageServer({ environment: 'development' });
-  }
 
   return (
     <div className="App">
