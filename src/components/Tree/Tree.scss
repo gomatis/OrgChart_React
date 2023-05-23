@@ -1,4 +1,14 @@
 .Tree-container {
+    &.vertical {
+        .TreeNode {
+            > div { 
+                width: 250px;
+            }
+        }
+        .parent-marker {
+            display: none;
+        }
+    }
     ul {
         padding: 0 30px;
     }

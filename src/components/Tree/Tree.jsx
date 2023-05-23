@@ -6,6 +6,10 @@ function Tree () {
 
     const {filteredEmployees} = useContext(DataContext);
 
+    // const [isVertical, setIsVertical] = useState(false); // To Do allow toggle between vertical/horizontal
+
+    const isVertical = false;
+
     const constructTreeFromList = (employeeList) => {
         const managerMap = {};
         if(employeeList && employeeList.length) {
@@ -43,7 +47,7 @@ function Tree () {
     }
 
     return (
-        <div className="Tree-container">
+        <div className={isVertical ? "Tree-container vertical" : "Tree-container horizontal"}>
             <ul>
                 {/* {filter === '-1' ? <p> All Employees</p> : <p>{filter} Employees</p> } */}
                 {constructTreeFromList(filteredEmployees)}
