@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/OrgChart_React/static/css/main.62217c05.css",
+    "main.css": "/OrgChart_React/static/css/main.792a04da.css",
     "main.js": "/OrgChart_React/static/js/main.43700ade.js",
     "static/js/787.d226dcd5.chunk.js": "/OrgChart_React/static/js/787.d226dcd5.chunk.js",
     "index.html": "/OrgChart_React/index.html",
-    "main.62217c05.css.map": "/OrgChart_React/static/css/main.62217c05.css.map",
+    "main.792a04da.css.map": "/OrgChart_React/static/css/main.792a04da.css.map",
     "main.43700ade.js.map": "/OrgChart_React/static/js/main.43700ade.js.map",
     "787.d226dcd5.chunk.js.map": "/OrgChart_React/static/js/787.d226dcd5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.62217c05.css",
+    "static/css/main.792a04da.css",
     "static/js/main.43700ade.js"
   ]
 }
