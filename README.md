@@ -8,6 +8,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 3. Complete CRUD operations
 4. Support toggle for vertical/horizontal tree
 
+# To Deploy:
+1. Remove the ghpages cache by running below command
+    `node node_modules/gh-pages/bin/gh-pages-clean.js`
+2. Run deploy script below
+    `npm run deploy`
 
 ## Available Scripts
 
