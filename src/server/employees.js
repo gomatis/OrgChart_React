@@ -8,6 +8,21 @@ export function initMirageServer({ environment = 'development' } = {}) {
     },
   
     routes() {
+      this.patch('api/teams/:team/include', (schema, request) => {
+        let idsToUpdate = JSON.parse(request.requestBody);
+        let newTeam = request.params.team;
+        let updatedEmployees = [];
+        for (let id of idsToUpdate) {
+            let employee = schema.employees.find(id);
+            employee.update({
+                ...employee,
+                team: newTeam
+            })
+            updatedEmployees.push(employee);
+        }
+        return updatedEmployees;
+      });
+
       this.namespace = "api/employees"
   
       this.get("/", (schema, request) => {
@@ -25,13 +40,14 @@ export function initMirageServer({ environment = 'development' } = {}) {
       this.patch('/:id', (schema, request) => {
         let newAttrs = JSON.parse(request.requestBody);
         let id = request.params.id;
-        let note = schema.employees.find(id);
-        return note.update(newAttrs);
+        let employee = schema.employees.find(id);
+        return employee.update(newAttrs);
       });
       this.delete('/:id', (schema, request) => {
         let id = request.params.id;
         return schema.employees.find(id).destroy();
       });
+
     },
   
     seeds(server) {

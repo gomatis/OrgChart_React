@@ -6,7 +6,7 @@ import DataProvider, { DataContext } from './context/DataContext';
 
 function App() {
 
-  const { filter, filteredEmployees, error, loading} = useContext(DataContext);
+  const { filteredEmployees, error, loading} = useContext(DataContext);
 
   return (
     <div className="App">
@@ -22,7 +22,7 @@ function App() {
               <List />
             </div>
             <div className="Panel-two">
-              <Tree filter={filter} data={filteredEmployees} />
+              <Tree />
             </div>
           </DataProvider>
         </div>

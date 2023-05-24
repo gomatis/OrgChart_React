@@ -9,6 +9,7 @@ const DataProvider = ({ children }) => {
   const [teams, setTeams] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [reporteeMap, setReporteeMap] = useState({});
   
 
   const updateEmployee = useCallback((employeeToUpdate) => {
@@ -36,6 +37,20 @@ const DataProvider = ({ children }) => {
     return identifiedTeams;
   }
 
+  const constructReporteeMap = (employeeList) => {
+    const managerMap = {};
+    if(employeeList && employeeList.length) {
+        for(let employee of employeeList) {
+            if(managerMap.hasOwnProperty(employee.managerID)){
+                managerMap[employee.managerID].push(employee.id);
+            } else {
+                managerMap[employee.managerID] = [employee.id];
+            }
+        }
+    }
+    return managerMap;
+  }
+
   useEffect(()=> {
     // fetch all employees
 
@@ -46,8 +61,10 @@ const DataProvider = ({ children }) => {
       (result) => {
         const empList = result.employees;
         const teamList = getAllTeams(empList);
+        const reporteesMap = constructReporteeMap(empList);
         setEmployeesList(empList);
         setFilteredEmployees(empList);
+        setReporteeMap(reporteesMap);
         setTeams(teamList);
         setLoading(false);
       },
@@ -71,6 +88,11 @@ const DataProvider = ({ children }) => {
   }, [filter, employeesList]);
 
   const updateManager = (movedEmployee, newManager) => {
+    console.log('repoteeMap is ', reporteeMap);
+    if(reporteeMap && reporteeMap[movedEmployee.id]) {
+        console.log('has reportees');
+        
+    }
     let updatedJson = {
       ...movedEmployee,
       managerID: newManager.id,
@@ -100,7 +122,7 @@ const DataProvider = ({ children }) => {
 
 
   return <DataContext.Provider 
-    value={{ filter, setFilter, filteredEmployees, teams, loading, error, updateManager }}>
+    value={{ filter, setFilter, filteredEmployees, teams, loading, error, updateManager, reporteeMap }}>
       {children}
     </DataContext.Provider>
 }
