@@ -1,0 +1,22 @@
+/* -------- To Reset user agent styling -------- */
+* {
+    box-sizing: border-box;
+}
+ul, p {
+    margin: 0px;
+    padding: 0px;
+}
+
+li {
+    display: block;
+}
+
+select, input {
+    font-size: $valueSize;
+    color: $darkText;
+}
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}

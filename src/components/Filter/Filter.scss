@@ -1,0 +1,13 @@
+.Filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include margin-vertical-20;
+    p {
+        @include label-style;
+    }
+    select {
+        width: 70%;
+    }
+}

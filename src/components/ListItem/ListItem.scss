@@ -1,0 +1,26 @@
+.ListItem {
+    margin: 15px 0px;
+    // border: 1px $text solid;
+    background-color: $text;
+    box-shadow: 1px 0px 2px $primary1;
+    border-radius: 4px;
+    padding: 10px 10px;
+    .label {
+        // @include label-style;
+        display: none;
+    }
+    .value {
+        font-size: 12px;
+        text-align: right;
+        width: 100%;
+        &.designation {
+            &::after {
+                content: ',';
+            }
+        }
+        &.name {
+            font-size: 22px;
+            text-align: left;
+        }
+    }
+}
